@@ -32,20 +32,20 @@
       git_docxtotext: on
       git_pdftotext: on
       git_xlsxtotext: on
-      git_user_name: "Christian Lang"
-      git_user_email: "lang.chr86@gmail.com"
+#      git_user_name: "Christian Lang"
+#      git_user_email: "lang.chr86@gmail.com"
 
   - role: dockerio
-  - role: ansible-role-docmake
-    vars:
-      pandoc: on
-      texlive_min: on
-      texlive_additional: on
-      markdownlint: on
-      drawio: on
-      gpp: on
-      metropolis: on
-      tikz_uml: on
+#  - role: ansible-role-docmake
+#    vars:
+#      pandoc: on
+#      texlive_min: on
+#      texlive_additional: on
+#      markdownlint: on
+#      drawio: on
+#      gpp: on
+#      metropolis: on
+#      tikz_uml: on
   - role: okular
 
   post_tasks:
