@@ -1,5 +1,5 @@
-dev-env
-=======
+Headless-Betrieb mit vagrant und X-Forwarding
+=============================================
 
 Diese VM ist auf headless-Betrieb mittels x11-Server ausgelegt
 und benötigt neben Virtualbox noch diverse andere Tools.
@@ -23,7 +23,7 @@ nutzen wir `vagrant` um automatisiert eine VM aufzusetzten. Dies funktioniert
 * Virtualbox Ubuntu-Server-VM mit allen Entwicklungs-Tools
 * VM durch `vagrant` und `ansible` automatisiert
 * SSH via Putty mit SSH-Key für alles
-* Source Code wird über gitlab zur Verfügung gestellt
+* Source Code wird über github zur Verfügung gestellt
 * CLion als IDE
 * `cmake` als Build-System
 * Google C++ Code Style
@@ -66,7 +66,7 @@ selber wird als SSH-Client verwendet.
   * SSH -> Auth -> Allow agent forwarding
   * Session -> Host Name: `vagrant@localhost`
   * Session -> Port: `2222`
-  * Session -> Saved Sessions: `prcpp`
+  * Session -> Saved Sessions: `jumpstart-vm`
 * Klicken Sie auf `Save`
 * Die gespeicherte Session können Sie später für die Verbindung zur
   VM verwenden.
@@ -114,16 +114,16 @@ Stellen Sie aber sicher, dass dieser den Anforderungen wie `RSA` und Bitbreite e
 ![Session](../images/putty_gen.png)
 
 
-### SSH-Key bei gitlab registrieren
+### SSH-Key bei github registrieren
 
-Den OpenSSH public Key können Sie nun in gitlab als sicheren Schlüssel
+Den OpenSSH public Key können Sie nun in github als sicheren Schlüssel
 registrieren: `User Settings` -> `SSH Keys`. Kopieren Sie einfach den
 kompletten Inhalt der `.opub` Datei in die entsprechende Text-Box.
 
 
 ### Private Key verwenden
 
-Damit Sie sich in gitlab oder auch der VM mittels
+Damit Sie sich in github oder auch der VM mittels
 Private-Public-Key-Verschlüsselung einloggen können, muss der entsprechende Client eine
 Möglichkeit haben, um den private Key zu benutzten. Dies bewerkstelligen wir
 mit dem Tool `pageant.exe` welches ebenfalls mit Putty installiert wurde.
@@ -261,7 +261,7 @@ Weitere Informationen bei Problemen finden Sie
 [hier](https://blogs.technet.microsoft.com/heyscriptingguy/2013/06/02/weekend-scripter-install-powershell-3-0-on-windows-7/).
 
 
-Erste Verbindung mit gitlab
+Erste Verbindung mit github
 ---------------------------
 
 Da wir Git Bash mittels OpenSSH und `pageant.exe` betreiben, müssen wir
@@ -270,7 +270,7 @@ Git Bash nicht möglich (Bug) und muss deshalb einmalig mittels Putty
 erledigt werden.
 
 * Starten Sie Putty
-* Verbinden Sie sich mit: `git@gitlab.fhnw.ch`
+* Verbinden Sie sich mit: `git@github.com`
 * Akzeptieren Sie den Host-Hash im auftauchenden Fenster
 * Schliessen Sie Putty
 
@@ -281,32 +281,6 @@ sich die Shell aber direkt wieder abmeldet.
 
 Entwicklungs-VM
 ===============
-
-
-Klonen des Repositories für die Entwicklungsumgebung
-----------------------------------------------------
-
-Nun können wir das nötige Git-Repository klonen. Starten Sie dazu Git Bash.
-
-~~~
-cd
-mkdir prcpp && cd prcpp
-git clone git@gitlab.fhnw.ch:prcpp/students/dev-env.git
-cd dev-env
-git checkout -b private/<my_name>
-~~~
-
-Nun haben Sie das Repository ausgecheckt und einen privaten Branch erstellt,
-auf welchem Sie ihre Änderungen commiten können. Ersetzten Sie <my_name>
-durch ihren Namen: z.B: christian_lang. Sollten Updates auf dem master Branch
-publiziert werden, können Sie ihren Branch folgendermassen darauf rebasen:
-
-~~~
-git checkout master
-git pull
-git checkout -
-git rebase master
-~~~
 
 
 VM personalisieren
@@ -333,8 +307,6 @@ Verwenden Sie beim erstmaligen Erzeugen Git Bash mit `Administrator`-Rechten.
 Um die Erzeugung zu starten, verwenden Sie folgenden Befehl.
 
 ~~~
-cd
-cd prcpp/dev-env
 vagrant up
 ~~~
 
@@ -378,7 +350,7 @@ werden alle Einstellungen wieder auf die Werte von Vagrant gesetzt.
 VM verwenden
 ------------
 
-Verbinden Sie sich mit der erstellten Session in Putty (`prcpp`) mittels
+Verbinden Sie sich mit der erstellten Session in Putty (`jumpstart-vm`) mittels
 der laufenden VM.
 
 
