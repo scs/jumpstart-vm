@@ -2,6 +2,7 @@
 
   pre_tasks:
   - include_tasks: tasks/ubuntu_apt.yml
+  - include_tasks: tasks/ubuntu_desktop.yml
   - include_tasks: tasks/ubuntu_headless.yml
   - include_tasks: tasks/basicsetup.yml
   - include_tasks: tasks/virtualbox_additions.yml
@@ -10,22 +11,17 @@
   roles:
   - role: ssh
     vars:
-      ssh_pub_files: ['ssh_key_clang_home.opub']
+      ssh_pub_files: ['ssh_key_clang_home.opub', 'rsa-key-clang-scs-20170919.opub']
 
   - role: swapfile
     vars:
-      swapfile_size: 8G
+      swapfile_size: 2G
 
   - role: bash
   - role: tmux
   - role: clion
   - role: hunspell
   - role: google_testing
-
-  - role: fubarhouse.rust
-    become: yes
-    shell_profiles: ['{{ ansible_env.HOME }}/.bash_profile']
-    cargo_items: []
 
   - role: git-tools
     vars:
@@ -52,4 +48,6 @@
       metropolis: on
       tikz_uml: on
   - role: okular
-  - role: yocto
+
+  post_tasks:
+  - include_tasks: tasks/ubuntu_cleanup.yml
