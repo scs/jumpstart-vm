@@ -46,6 +46,7 @@
 #      gpp: on
 #      metropolis: on
 #      tikz_uml: on
+#      docmake_version: '35411f1'
   - role: okular
 
   post_tasks:

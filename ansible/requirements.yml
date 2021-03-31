@@ -1,4 +1,4 @@
 - src: 'https://github.com/langchr86/git-tools.git'
-  version: 'master'
+  version: 'bf18211'
 - src: 'https://github.com/langchr86/ansible-role-docmake.git'
-  version: 'master'
+  version: '64a6ab1'
