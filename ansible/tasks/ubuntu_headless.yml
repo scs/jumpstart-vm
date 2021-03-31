@@ -1,0 +1,4 @@
+- name: deploy hdonly script
+  copy:
+    dest: "{{ ansible_env.HOME }}/hdonly.bash"
+    content: "export GDK_SCALE=1"

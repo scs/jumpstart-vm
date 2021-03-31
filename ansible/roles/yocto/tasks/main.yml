@@ -1,0 +1,43 @@
+---
+
+- name: Install prerequisites for Yocto eSDK
+  become: yes
+  package: name={{ item }}
+  with_items:
+  - gawk
+  - wget
+  - git-core
+  - diffstat
+  - unzip
+  - texinfo
+  - gcc-multilib
+  - build-essential
+  - chrpath
+  - socat
+  - cpio
+  - python
+  - python3
+  - python3-pip
+  - python3-pexpect
+  - xz-utils
+  - debianutils
+  - iputils-ping
+
+- name: Additional prerequisites for Yocto eSDK
+  become: yes
+  package: name={{ item }}
+  with_items:
+    - file
+    - ssh
+    - locales
+
+- name: Set locale to en_US.UTF-8
+  become: yes
+  locale_gen:
+    name: en_US.UTF-8
+
+- name: Set default locale to en_US.UTF-8
+  become: yes
+  lineinfile: dest=/etc/default/locale
+    regexp="LC_ALL"
+    line="LC_ALL=\"en_US.UTF-8\""

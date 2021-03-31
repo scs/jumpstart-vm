@@ -1,0 +1,63 @@
+- name: Install build tools
+  become: yes
+  package: name={{ item }}
+  with_items:
+  - build-essential
+  - gcc
+  - ccache
+  - cmake
+  - automake
+  - autoconf
+  - pkg-config
+  - valgrind
+  - gcovr
+  - python
+  - libsystemd-dev
+
+- name: Install catch2
+  become: yes
+  shell: |
+    cd /tmp
+    mkdir catch
+    cd catch
+    git clone https://github.com/catchorg/Catch2.git
+    cd Catch2
+    git checkout v2.11.0
+    cmake -Bbuild -H. -DBUILD_TESTING=OFF
+    cmake --build build/ --target install
+    cd /tmp
+    rm -rf /tmp/catch
+  args:
+    creates: /usr/local/include/catch2/catch.hpp
+
+- name: Install websocketpp
+  become: yes
+  shell: |
+    cd /tmp
+    mkdir websocketpp
+    cd websocketpp
+    git clone https://github.com/zaphoyd/websocketpp.git
+    cd websocketpp
+    git checkout 0.8.1
+    cmake -Bbuild -H.
+    cmake --build build/ --target install
+    cd /tmp
+    rm -rf /tmp/websocketpp
+  args:
+    creates: /usr/local/include/websocketpp/version.hpp
+
+- name: Install asio
+  become: yes
+  shell: |
+    cd /tmp
+    mkdir asio
+    cd asio
+    git clone https://github.com/chriskohlhoff/asio.git
+    cd asio
+    git checkout asio-1-12-1
+    cd asio/include
+    cp -r asio* /usr/local/include
+    cd /tmp
+    rm -rf /tmp/asio
+  args:
+    creates: /usr/local/include/asio.hpp

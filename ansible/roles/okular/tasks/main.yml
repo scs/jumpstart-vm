@@ -1,0 +1,13 @@
+---
+
+- name: install okular
+  become: yes
+  package:
+    name: okular
+
+- name: set okular as default pdf viewer
+  become: yes
+  lineinfile:
+    dest: "/etc/gnome/defaults.list"
+    regexp: "^application/pdf="
+    line: "application/pdf=okular.desktop"

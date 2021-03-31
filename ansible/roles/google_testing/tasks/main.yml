@@ -1,0 +1,11 @@
+- name: Install basic build tools
+  become: yes
+  package: name={{ item }}
+  with_items:
+  - build-essential
+  - gcc
+  - g++
+  - cmake
+
+- import_tasks: tasks/test_mock.yml
+- import_tasks: tasks/benchmark.yml

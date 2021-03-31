@@ -1,0 +1,18 @@
+# do not deploy shared objects because linking to gtest.so and gmock.so will lead to ODR violation
+- name: Install googletests
+  become: yes
+  shell: |
+    cd /tmp
+    mkdir googletest
+    cd googletest
+    git clone https://github.com/google/googletest.git
+    cd googletest
+    git checkout release-1.10.0
+    mkdir build
+    cd build
+    cmake -DBUILD_SHARED_LIBS=OFF ..
+    make -j4 install
+    cd /tmp
+    rm -rf /tmp/googletest
+  args:
+    creates: /usr/local/include/gtest/gtest.h

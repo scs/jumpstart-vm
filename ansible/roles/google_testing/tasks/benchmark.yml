@@ -1,0 +1,19 @@
+- name: Install google benchmark
+  become: yes
+  shell: |
+    cd /tmp
+    mkdir benchmark
+    cd benchmark
+    git clone https://github.com/google/benchmark.git
+    cd benchmark
+    git checkout v1.5.0
+    mkdir build
+    cd build
+    cmake -DBENCHMARK_ENABLE_GTEST_TESTS=OFF -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release ..
+    make -j4 install
+    cmake -DBENCHMARK_ENABLE_GTEST_TESTS=OFF -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release ..
+    make -j4 install
+    cd /tmp
+    rm -rf /tmp/benchmark
+  args:
+    creates: /usr/local/include/benchmark/benchmark.h

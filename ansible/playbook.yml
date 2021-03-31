@@ -1,0 +1,55 @@
+- hosts: all
+
+  pre_tasks:
+  - include_tasks: tasks/ubuntu_apt.yml
+  - include_tasks: tasks/ubuntu_headless.yml
+  - include_tasks: tasks/basicsetup.yml
+  - include_tasks: tasks/virtualbox_additions.yml
+  - include_tasks: tasks/buildtools.yml
+
+  roles:
+  - role: ssh
+    vars:
+      ssh_pub_files: ['ssh_key_clang_home.opub']
+
+  - role: swapfile
+    vars:
+      swapfile_size: 8G
+
+  - role: bash
+  - role: tmux
+  - role: clion
+  - role: hunspell
+  - role: google_testing
+
+  - role: fubarhouse.rust
+    become: yes
+    shell_profiles: ['{{ ansible_env.HOME }}/.bash_profile']
+    cargo_items: []
+
+  - role: git-tools
+    vars:
+      git_aliases: on
+      git_rerere: on
+      git_editor_nano: on
+      git_prompt: on
+      git_archivestotext: on
+      git_docxtotext: on
+      git_pdftotext: on
+      git_xlsxtotext: on
+      git_user_name: "Christian Lang"
+      git_user_email: "lang.chr86@gmail.com"
+
+  - role: dockerce
+  - role: ansible-role-docmake
+    vars:
+      pandoc: on
+      texlive_min: on
+      texlive_additional: on
+      markdownlint: on
+      drawio: on
+      gpp: on
+      metropolis: on
+      tikz_uml: on
+  - role: okular
+  - role: yocto
