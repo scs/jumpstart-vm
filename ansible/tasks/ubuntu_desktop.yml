@@ -1,8 +1,3 @@
-- name: First time packages upgrade
-  become: yes
-  apt:
-    upgrade: yes
-
 - name: Install samba
   become: yes
   apt:
