@@ -36,7 +36,7 @@
       git_user_name: "Christian Lang"
       git_user_email: "lang.chr86@gmail.com"
 
-  - role: dockerce
+  - role: dockerio
   - role: ansible-role-docmake
     vars:
       pandoc: on
