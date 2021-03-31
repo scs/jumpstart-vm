@@ -39,12 +39,14 @@
 - name: Install psutil that is needed for dconf module below
   become: yes
   apt:
-    name: python-psutil
+    name: python3-psutil
 
 - name: add gnome favorite apps
   dconf:
     key: "/org/gnome/shell/favorite-apps"
-    value: "['org.gnome.Nautilus.desktop', 'yelp.desktop', 'org.gnome.Terminal.desktop', 'jetbrains-clion.desktop']"
+    value: "['org.gnome.Nautilus.desktop', 'yelp.desktop', 'org.gnome.Terminal.desktop', '{{ item }}']"
+  with_items:
+    - 'jetbrains-clion.desktop'
 
 - name: add german keyboard layouts
   dconf:
