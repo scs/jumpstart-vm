@@ -5,6 +5,7 @@ cd ${SCRIPT_DIR}
 
 sudo apt-get update
 sudo apt-get install ansible -y
+sudo apt-get install git -y
 
 ansible-galaxy install -r ${SCRIPT_DIR}/ansible/requirements.yml
 
