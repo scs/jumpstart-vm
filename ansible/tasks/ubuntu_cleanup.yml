@@ -1,0 +1,8 @@
+- name: Remove no more referenced packages
+  become: yes
+  apt:
+    autoremove: yes
+
+- name: Clean apt cache completely
+  become: yes
+  command: apt clean
