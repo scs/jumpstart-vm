@@ -1,0 +1,24 @@
+- name: Create eth0-workaround unit file
+  become: yes
+  copy:
+    dest: "/etc/systemd/system/eth0-workaround.service"
+    content: |
+      [Unit]
+      After = network-online.target
+      Wants = network-online.target
+
+      [Service]
+      Type = oneshot
+      RemainAfterExit = yes
+      ExecStart = nmcli connection down "Wired connection 1"
+      ExecStart = sleep 1
+      ExecStart = nmcli connection up "Wired connection 1"
+
+      [Install]
+      WantedBy = multi-user.target
+
+- name: Enable eth0-workaround service
+  become: yes
+  systemd:
+    name: "eth0-workaround"
+    enabled: yes
