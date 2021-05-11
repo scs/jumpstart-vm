@@ -7,6 +7,7 @@
   - include_tasks: tasks/ubuntu_ethernet_workaround.yml
   - include_tasks: tasks/basicsetup.yml
   - include_tasks: tasks/buildtools.yml
+  - include_tasks: tasks/java.yml
 
   roles:
   - role: ssh
@@ -15,7 +16,7 @@
 
   - role: swapfile
     vars:
-      swapfile_size: 2G
+      swapfile_size: 4G
 
   - role: bash
   - role: tmux
@@ -50,5 +51,28 @@
 #      docmake_version: '35411f1'
   - role: okular
 
+  - role: ansible-role-intellij
+    vars:
+      intellij_version: '2021.1.1'
+      intellij_edition: 'community'
+      users:
+        - username: vagrant
+          intellij_jdks:
+            - name: '11'
+              home: '{{ jdk11_home }}'
+          intellij_default_jdk: '11'
+          intellij_disabled_plugins:
+            - org.jetbrains.plugins.gradle
+            - CVS
+            - com.intellij.uiDesigner
+            - org.jetbrains.android
+            - TestNG-J
+            - hg4idea
+            - Subversion
+            - AntSupport
+            - DevKit
+            - Kotlin
+
   post_tasks:
+  - include_tasks: tasks/intellij.yml
   - include_tasks: tasks/ubuntu_cleanup.yml

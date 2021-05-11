@@ -1,0 +1,10 @@
+---
+
+- name: Add intelliJ alias for user
+  lineinfile:
+    dest="{{ ansible_env.HOME }}/.bash_aliases"
+    line="alias intellij='{{ ansible_local.intellij.general.home }}/bin/idea.sh &>/dev/null'"
+    regexp='^alias intellij='
+    state=present
+    insertafter=EOF
+    create=True
