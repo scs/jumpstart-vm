@@ -4,8 +4,8 @@
 vm_name = "jumpstart-vm"
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "peru/ubuntu-20.04-desktop-amd64"
-  config.vm.box_version = "20210317.01"
+  config.vm.box = "ubuntu/focal64"
+  config.vm.box_version = "20210603.0.0"
 
   config.vagrant.plugins = ["vagrant-disksize"]
   config.disksize.size = '64GB'
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.hostname = vm_name
 
-  config.vm.synced_folder "./", "/vagrant/"
+  config.vm.synced_folder ".", "/vagrant"
 
   config.vm.provision "shell",
     inline: "/vagrant/provision.sh",

@@ -1,3 +1,8 @@
+- name: Install Ubuntu Desktop
+  become: yes
+  apt:
+    name: ubuntu-desktop
+
 - name: Install samba
   become: yes
   apt:
