@@ -1,6 +1,6 @@
 ---
 
-clion_version: 2020.3
+clion_version: 2021.1
 clion_download_mirror: https://download.jetbrains.com/cpp/
 clion_download_directory: /tmp
 clion_user_dir: "{{ ansible_env.HOME }}"
