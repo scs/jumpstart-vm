@@ -11,14 +11,11 @@ Der Komplette Vorgang wird folgend beschrieben.
 Erzeugung mittels Vagrant und Ansible
 -------------------------------------
 
-Siehe: [](../headless-vm/README.md)
-
 * generate with vagrant
 * if it hangs:
   * login via GUI and connect both network connections
   * or manually do shutdown and `vagrant up --provision` 
   * or only `vagrant provision` 
-* start up with GUI
 
 If problems with DHCP arises:
 
@@ -32,6 +29,8 @@ VBoxManage dhcpserver remove --netname "HostInterfaceNetworking-vboxnet0"
 Abschliessen
 ------------
 
+* restart up with GUI
+* `sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y`
 * shutdown VM
 * remove existing shared folders
 * export as appliance OVA 2.0: `prcpp-desktop.ova`
