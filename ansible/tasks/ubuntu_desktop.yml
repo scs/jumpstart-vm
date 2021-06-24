@@ -3,6 +3,11 @@
   apt:
     name: ubuntu-desktop
 
+- name: Install Ubuntu Desktop missing dependencies (needed for vbox guest addditions)
+  become: yes
+  apt:
+    name: linux-image-generic
+
 - name: Install samba
   become: yes
   apt:
