@@ -49,7 +49,7 @@
 - name: define all gnome favorite apps
   dconf:
     key: "/org/gnome/shell/favorite-apps"
-    value: "['org.gnome.Nautilus.desktop', 'firefox.desktop', 'org.gnome.Terminal.desktop', 'jetbrains-clion.desktop']"
+    value: "['org.gnome.Nautilus.desktop', 'firefox.desktop', 'org.gnome.Terminal.desktop', 'jetbrains-clion.desktop', 'jetbrains-idea-ce.desktop']"
 
 - name: add german keyboard layouts
   dconf:
