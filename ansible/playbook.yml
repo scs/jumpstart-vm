@@ -4,7 +4,6 @@
   - include_tasks: tasks/ubuntu_apt.yml
   - include_tasks: tasks/ubuntu_desktop.yml
   - include_tasks: tasks/ubuntu_headless.yml
-  - include_tasks: tasks/ubuntu_ethernet_workaround.yml
   - include_tasks: tasks/basicsetup.yml
   - include_tasks: tasks/buildtools.yml
   - include_tasks: tasks/java.yml
