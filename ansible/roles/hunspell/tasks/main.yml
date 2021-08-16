@@ -1,6 +1,0 @@
----
-
-- name: Add hunspell dictionary files
-  copy:
-    dest: "{{ hunspell_path }}"
-    src: "de_CH/"

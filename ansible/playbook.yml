@@ -21,7 +21,6 @@
   - role: bash
   - role: tmux
   - role: clion
-  - role: hunspell
   - role: google_testing
 
   - role: git-tools

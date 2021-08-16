@@ -1,3 +1,0 @@
----
-
-hunspell_path: "{{ ansible_env.HOME | expanduser }}/hunspell"
