@@ -1,8 +1,9 @@
 ---
 
-- name: Add intelliJ alias for user
+- name: Add intelliJ alias for all user profiles
+  become: yes
   lineinfile:
-    dest="{{ ansible_env.HOME }}/.bash_aliases"
+    dest="/etc/profile.d/intellij.sh"
     line="alias intellij='{{ ansible_local.intellij.general.home }}/bin/idea.sh &>/dev/null'"
     regexp='^alias intellij='
     state=present
