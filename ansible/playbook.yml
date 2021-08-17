@@ -17,6 +17,22 @@
     vars:
       swapfile_size: 4G
 
+  - role: ansible-role-samba
+    become: yes
+    vars:
+      samba_mitigate_cve_2017_7494: off
+      samba_users:
+        - name: '{{ ansible_env.USER }}'
+          password: '{{ ansible_env.USER }}'
+      samba_shares:
+        - name: vagrant-home
+          path: '{{ ansible_env.HOME }}'
+          browseable: on
+          owner: '{{ ansible_env.USER }}'
+          group: '{{ ansible_env.USER }}'
+          valid_users: '{{ ansible_env.USER }}'
+          write_list: '{{ ansible_env.USER }}'
+
   - role: bash
   - role: tmux
   - role: clion

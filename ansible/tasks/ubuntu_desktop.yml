@@ -8,39 +8,6 @@
   apt:
     name: linux-image-generic
 
-- name: Install samba
-  become: yes
-  apt:
-    name: samba
-
-- name: setup samba share for home directory
-  become: yes
-  blockinfile:
-    path: "/etc/samba/smb.conf"
-    marker: "# {mark} ANSIBLE MANAGED BLOCK: setup samba share for home directory"
-    block: |
-      [vagrant-home]
-        path = /home/vagrant
-        guest ok = yes
-        browseable = yes
-        read only = no
-        create mask = 0777
-        directory mask = 0777
-        force create mode = 777
-        force directory mode = 777
-        force security mode = 777
-        force directory security mode = 777
-
-- name: enable, start and load samba services
-  become: yes
-  service:
-    name: "{{ item }}"
-    enabled: yes
-    state: reloaded
-  with_items:
-    - smbd
-    - nmbd
-
 - name: Install psutil that is needed for dconf module below
   become: yes
   apt:

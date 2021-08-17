@@ -4,3 +4,5 @@
   version: '64a6ab1'
 - src: 'https://github.com/gantsign/ansible-role-intellij.git'
   version: '6.4.0'
+- src: 'https://github.com/bertvv/ansible-role-samba.git'
+  version: 'v2.7.1'
