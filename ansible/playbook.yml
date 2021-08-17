@@ -70,7 +70,7 @@
       intellij_version: '2021.1.1'
       intellij_edition: 'community'
       users:
-        - username: vagrant
+        - username: '{{ ansible_env.USER }}'
           intellij_jdks:
             - name: '11'
               home: '{{ jdk11_home }}'
