@@ -64,8 +64,8 @@ selber wird als SSH-Client verwendet.
   * SSH -> Cipher -> Setzten Sie `Arcfour` an die erste Stelle der Liste
   * SSH -> X11 -> Enable X11 forwarding
   * SSH -> Auth -> Allow agent forwarding
-  * Session -> Host Name: `vagrant@localhost`
-  * Session -> Port: `2222`
+  * Session -> Host Name: `vagrant@jumpstart-vm`
+  * Session -> Port: `22`
   * Session -> Saved Sessions: `jumpstart-vm`
 * Klicken Sie auf `Save`
 * Die gespeicherte Session können Sie später für die Verbindung zur

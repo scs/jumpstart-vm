@@ -3,7 +3,7 @@
   apt:
     name: ubuntu-desktop
 
-- name: Install Ubuntu Desktop missing dependencies (needed for vbox guest addditions)
+- name: Install Ubuntu Desktop missing dependencies (needed for vbox guest additions)
   become: yes
   apt:
     name: linux-image-generic

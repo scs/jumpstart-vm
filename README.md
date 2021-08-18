@@ -1,21 +1,53 @@
 jumpstart-vm
 ============
 
-Für die Teilnehmenden existiert eine vorbereitete Desktop-VM,
-welche direkt verwendet werden kann.
-Die VM selber ist bereits generiert
-und muss nur noch in Virtualbox importiert werden.
+Für den [Jumpstart-Kurs](https://github.com/scs/jumpstart-docs) wird eine Entwicklung-Umgebung benötigt,
+in welcher alle Tools für die entsprechenden Übungs-Aufgaben installiert sind.
+Damit diese Umgebung nicht mit anderen bereits installierten Tools kollidiert
+und für alle Teilnehmen konsistent ist,
+wird dafür eine virtuelle Machine eingerichtet.
 
-Das Archiv-File der VM befindet sich auf dem AD oder dem verteilten USB-Stick.
+Als Basis wird Ubuntu-Desktop in einer `virtualbox` VM verwendet,
+auf welcher mittels `ansible` im Folgenden alle benötigten Tools automatisiert installiert werden.
 
 
-Virtualbox
-----------
+Installation
+------------
 
-Wir verwenden Virtualbox as Hypervisor für die VM.
+Wir verwenden die neuste Version von Virtualbox as Hypervisor für die VM:
 [VirtualBox Downloads](https://www.virtualbox.org/wiki/Downloads)
 
-Nach der Installation kann die heruntergeladene VM als Appliance importieren.
+Nach der Installation von Virtualbox kann eine neue Linux-VM erstellt
+und mit der Installation von Ubuntu begonnen werden.
+
+* Neustes LTS Image von Ubuntu Desktop herunterladen: [ubuntu-desktop-20.04](https://ubuntu.com/download/desktop)
+* In Virtualbox eine neue VM erstellen
+  * Name: jumpstart-vm
+  * Typ: Linux
+  * Version: Ubuntu 64-bit
+  * mind. 4GB RAM
+  * mind. 64GB Harddisk
+* VM konfigurieren: Ändern
+  * Netzwerk -> Adapter 2 -> aktivieren -> Host-only Adapter
+  * System -> Prozessor -> sinnvolle Anzahl wählen (maximal so viele wie Arbeitsspeicher in GB)
+  * Anzeige -> Grafikspeicher: 128MB, 3D-Beschleunigung aktivieren
+* VM starten
+  * Ubuntu .iso als Boot-Medium anwählen
+  * "Install Ubuntu"
+  * "Minimal Installation"
+  * "Erase Disk and install Ubuntu"
+  * Computers name: jumpstart-vm
+  * Username: vagrant
+  * Password vagrant
+* VM neu starten (Boot-Medium wird automatisch entfernt)
+* Tools installieren
+  * Konsole öffnen
+  * `sudo apt install -y git openssh-server`
+  * `git clone https://github.com/scs/jumpstart-vm.git`
+  * `cd jumpstart-vm`
+  * `./provision.sh`
+  * Falls hier irgendwelche Fehler auftreten, einfach nochmals oder zuerst mit `apt udpate && apt upgrade -y` versuchen
+* VM neu starten
 
 
 Rechen-Performance der VM
@@ -29,10 +61,6 @@ Diese finden sich in den BIOS/UEFI-Einstellungen.
 Unter Intel-CPUs: `VT-x` und `VT-d`
 
 Unter AMD-CPUs: `AMD-V` und `AMD-Vi` oder `SVM`
-
-Sollten trotzdem Probleme mit der VM auftreten,
-sollte sichergestellt werden,
-dass KVM als Paravirtualisierung in Virtualbox eingestellt ist.
 
 
 VM Tuning (optional)
@@ -97,6 +125,7 @@ Austauschen von Dateien zwischen VM und Host
 
 Die gewünschte Datei öffnen und den Inhalt mittels `Ctrl-A` und `Ctrl-C` kopieren.
 Danach den Inhalt am Zielort in eine neue Datei einfügen.
+Dazu muss im VM-Fenster unter: Geräte -> Gemeinsame Zwischenablage -> bidirektional gewählt sein
 
 Achtung:
 Unter Linux führt das Markieren von Text meist direkt zu einer Kopie dieses in der Zwischenablage.
@@ -120,4 +149,20 @@ Dieses Share kann direkt in Windows verwendet werden.
 * Den zu verwendenden Laufwerkbuchstaben wählen
 * Pfad für den Ordner: `\\jumpstart-vm\vagrant-home`
 * `Verbindung bei Anmeldung wiederherstellen` und `Verbindung mit anderen Anmeldeinformationen herstellen` anwählen
-* Im nächsten Dialog User/Passwort: `vagrant:vagrant` verwenden und `Anmeldedaten speichern` wählen
+* Im nächsten Dialog User: `\vagrant` (ohne Domäne) und Passwort: `vagrant` verwenden und `Anmeldedaten speichern` wählen
+
+
+### Variante Gemeinsame Ordner
+
+Unter "Gemeinsame Ordner" kann ein bind-Mount von einem Host-Pfad in die VM eingerichtet werden.
+Dazu als Pfad den gewünschten Host-Ordner, einen beliebigen Namen und einen Einbindepunkt (z.B: /mnt/my_folder) angeben.
+Die Option "Automatisch einbinden" sorgt dafür,
+dass der gemeinsame Ordner bei jedem VM-Start erneut verbunden wird.
+
+
+Headless-Verwendung
+-------------------
+
+Die VM ist auch für die Benutzung ohne Desktop-Oberflache und Virtualbox-GUI ausgelegt.
+Als Alternative kann mittels SSH und X11-Forwarding gearbeitet werden.
+Weitere Infos dazu unter: [docs/headless_and_vagrant.md](docs/headless_and_vagrant.md)
