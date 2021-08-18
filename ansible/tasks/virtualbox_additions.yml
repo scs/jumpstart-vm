@@ -6,3 +6,10 @@
   - virtualbox-guest-dkms
   - virtualbox-guest-utils
   - virtualbox-guest-x11
+
+- name: Add user to vboxsf group to have access to bind mounts
+  become: yes
+  user:
+    name: "{{ ansible_env.USER }}"
+    append: yes
+    groups: vboxsf
