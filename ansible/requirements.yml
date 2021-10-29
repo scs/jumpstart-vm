@@ -1,5 +1,5 @@
 - src: 'https://github.com/langchr86/git-tools.git'
-  version: 'bf18211'
+  version: 'c418466'
 - src: 'https://github.com/langchr86/ansible-role-docmake.git'
   version: '57d7548'
 - src: 'https://github.com/gantsign/ansible-role-intellij.git'
