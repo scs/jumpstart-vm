@@ -1,23 +1,23 @@
 - name: Install basic tools
   become: yes
-  package: name={{ item }}
-  with_items:
-  - tree
-  - nano
-  - wget
-  - htop
-  - rsync
-  - unzip
-  - tar
-  - fd-find
-  - firefox
+  package:
+    name:
+      - tree
+      - nano
+      - wget
+      - htop
+      - rsync
+      - unzip
+      - tar
+      - fd-find
+      - firefox
 
 - name: Install X11 base
   become: yes
-  package: name={{ item }}
-  with_items:
-  - xbase-clients
-  - x11-common
+  package:
+    name:
+      - xbase-clients
+      - x11-common
 
 - name: Set timezone to Europe/Zurich
   become: yes

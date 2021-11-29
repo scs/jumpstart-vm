@@ -1,11 +1,11 @@
 - name: Install DKMS and virtualbox additions
   become: yes
-  package: name={{ item }}
-  with_items:
-  - dkms
-  - virtualbox-guest-dkms
-  - virtualbox-guest-utils
-  - virtualbox-guest-x11
+  package:
+    name:
+      - dkms
+      - virtualbox-guest-dkms
+      - virtualbox-guest-utils
+      - virtualbox-guest-x11
 
 - name: Add user to vboxsf group to have access to bind mounts
   become: yes
