@@ -1,6 +1,8 @@
 jumpstart-vm
 ============
 
+[![vagrant-up](https://github.com/scs/jumpstart-vm/actions/workflows/vagrant-up.yml/badge.svg)](https://github.com/scs/jumpstart-vm/actions/workflows/vagrant-up.yml)
+
 Für den [Jumpstart-Kurs](https://github.com/scs/jumpstart-docs) wird eine Entwicklung-Umgebung benötigt,
 in welcher alle Tools für die entsprechenden Übungs-Aufgaben installiert sind.
 Damit diese Umgebung nicht mit anderen bereits installierten Tools kollidiert
