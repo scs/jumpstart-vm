@@ -3,6 +3,6 @@
 - src: 'https://github.com/langchr86/ansible-role-docmake.git'
   version: '27ed841'
 - src: 'https://github.com/gantsign/ansible-role-intellij.git'
-  version: '6.4.0'
+  version: '6.6.1'
 - src: 'https://github.com/bertvv/ansible-role-samba.git'
   version: 'v2.7.1'
