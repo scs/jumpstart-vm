@@ -1,7 +1,7 @@
 - src: 'https://github.com/langchr86/git-tools.git'
   version: 'c418466'
 - src: 'https://github.com/langchr86/ansible-role-docmake.git'
-  version: '57d7548'
+  version: '27ed841'
 - src: 'https://github.com/gantsign/ansible-role-intellij.git'
   version: '6.4.0'
 - src: 'https://github.com/bertvv/ansible-role-samba.git'
