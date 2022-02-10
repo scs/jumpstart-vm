@@ -39,7 +39,7 @@ Es gibt mehrere Möglichkeiten wie die VM aufgesetzt werden kann:
 * Hyper-V:
   * Beste Kompatibilität, wenn auch Docker-Desktop oder WSL2 auf dem physischen PC laufen muss.
   * Bedienung über den virtuellen Desktop eingeschränkt.
-    Hier wird die Verwendung mittels SSH und X-Forwarding empfohlen.
+    Hier wird die Verwendung mittels [SSH und X-Forwarding](docs/headless.md) empfohlen.
   * [Installation mit Hyper-V](docs/hyperv.md)
 
 
@@ -89,6 +89,6 @@ Weitere verfügbare Tools
 Headless-Verwendung
 -------------------
 
-Die VM ist auch für die Benutzung ohne Desktop-Oberflache und Virtualbox-GUI ausgelegt.
-Als Alternative kann mittels SSH und X11-Forwarding gearbeitet werden.
-Weitere Infos dazu unter: [docs/headless_and_vagrant.md](docs/headless_and_vagrant.md)
+Die VM ist auch für die Benutzung ohne virtueller Desktop-Oberfläche ausgelegt.
+Dazu kann mittels SSH und X-Forwarding gearbeitet werden.
+Weitere Infos dazu unter: [docs/headless.md](docs/headless.md)
