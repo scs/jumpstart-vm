@@ -1,0 +1,3 @@
+---
+
+docker_daemon_config_folder: "/etc/docker"

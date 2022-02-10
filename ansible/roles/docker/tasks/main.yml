@@ -22,3 +22,12 @@
     name: "{{ ansible_env.USER }}"
     append: yes
     groups: docker
+
+- name: "Add docker daemon network config: {{ docker_daemon_config_folder }}/daemon.json"
+  become: yes
+  copy:
+    src: daemon.json
+    dest: "{{ docker_daemon_config_folder }}/daemon.json"
+    mode: 0644
+  notify:
+    - restart_docker
