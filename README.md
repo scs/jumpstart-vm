@@ -77,6 +77,7 @@ Folgend ein kleiner Auszug aus CLion:
 Weitere verfügbare Tools
 ------------------------
 
+* `code` (Visual Studio Code)
 * `git gui` (git Commit Helper)
 * `gitk` (git Tree Viewer)
 * `valgrind` (Memory Analyzer)
