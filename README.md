@@ -2,6 +2,7 @@ jumpstart-vm
 ============
 
 [![vagrant-up](https://github.com/scs/jumpstart-vm/actions/workflows/vagrant-up.yml/badge.svg)](https://github.com/scs/jumpstart-vm/actions/workflows/vagrant-up.yml)
+[![ansible-lint](https://github.com/scs/jumpstart-vm/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/scs/jumpstart-vm/actions/workflows/ansible-lint.yml)
 
 Für den [Jumpstart-Kurs](https://github.com/scs/jumpstart-docs) wird eine Entwicklung-Umgebung benötigt,
 in welcher alle Tools für die entsprechenden Übungs-Aufgaben installiert sind.
