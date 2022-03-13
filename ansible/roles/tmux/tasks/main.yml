@@ -8,6 +8,7 @@
   copy:
     src: .tmux.conf
     dest: "~/"
+    mode: "u+rw"
 
 - name: Ensure Unix line endings
   replace:

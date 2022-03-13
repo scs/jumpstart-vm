@@ -8,6 +8,7 @@
   file:
     path: "{{ item }}"
     state: directory
+    mode: "u+rw"
   with_items:
   - "{{ clion_download_directory }}"
   - "{{ clion_install_directory }}"
@@ -28,16 +29,19 @@
     state=present
     insertafter=EOF
     create=True
+    mode="ugo+rw"
 
 - name: create local .local/share/applications folder
   file:
     dest: "{{ ansible_env.HOME }}/.local/share/applications/"
     state: directory
+    mode: "u+rw"
 
 - name: Add clion desktop file
   template:
     dest: "{{ ansible_env.HOME }}/.local/share/applications/jetbrains-clion.desktop"
     src: "jetbrains-clion.desktop"
+    mode: "u+rw"
 
 - name: Define a high number of inotify watches
   become: true
