@@ -7,5 +7,5 @@
       - g++
       - cmake
 
-- import_tasks: tasks/test_mock.yml
-- import_tasks: tasks/benchmark.yml
+- import_tasks: test_mock.yml
+- import_tasks: benchmark.yml
