@@ -1,6 +1,6 @@
 # do not deploy shared objects because linking to gtest.so and gmock.so will lead to ODR violation
 - name: Install googletests
-  become: yes
+  become: true
   shell: |
     cd /tmp
     mkdir googletest

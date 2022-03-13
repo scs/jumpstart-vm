@@ -1,5 +1,5 @@
 - name: Install tmux tools
-  become: yes
+  become: true
   package:
     name:
       - tmux

@@ -1,5 +1,5 @@
 - name: Install dependency for CLion markdown plugin
-  become: yes
+  become: true
   package:
     name:
       - openjfx
@@ -14,13 +14,13 @@
 
 - name: Install CLion
   unarchive:
-    copy: no
+    copy: false
     src: "{{ clion_download_url}}"
     dest: "{{ clion_install_directory }}"
     creates: "{{ clion_location }}/bin/clion.sh"
 
 - name: Add clion alias for all user profiles
-  become: yes
+  become: true
   lineinfile:
     dest="/etc/profile.d/clion.sh"
     line="alias clion='{{ clion_location }}/bin/clion.sh &>/dev/null'"
@@ -40,7 +40,7 @@
     src: "jetbrains-clion.desktop"
 
 - name: Define a high number of inotify watches
-  become: yes
+  become: true
   sysctl:
     name: fs.inotify.max_user_watches
     value: "524288"

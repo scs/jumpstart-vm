@@ -1,5 +1,5 @@
 - name: Install basic tools
-  become: yes
+  become: true
   package:
     name:
       - tree
@@ -13,24 +13,24 @@
       - firefox
 
 - name: Install X11 base
-  become: yes
+  become: true
   package:
     name:
       - xbase-clients
       - x11-common
 
 - name: Set timezone to Europe/Zurich
-  become: yes
+  become: true
   timezone:
     name: Europe/Zurich
 
 - name: Set locale to en_US.UTF-8
-  become: yes
+  become: true
   locale_gen:
     name: en_US.UTF-8
 
 - name: Set default locale to en_US.UTF-8
-  become: yes
+  become: true
   lineinfile: dest=/etc/default/locale
     regexp="LC_ALL"
     line="LC_ALL=\"en_US.UTF-8\""

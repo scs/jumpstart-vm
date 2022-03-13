@@ -18,16 +18,16 @@
       swapfile_size: 4G
 
   - role: ansible-role-samba
-    become: yes
+    become: true
     vars:
-      samba_mitigate_cve_2017_7494: off
+      samba_mitigate_cve_2017_7494: false
       samba_users:
         - name: '{{ ansible_env.USER }}'
           password: '{{ ansible_env.USER }}'
       samba_shares:
         - name: vagrant-home
           path: '{{ ansible_env.HOME }}'
-          browseable: on
+          browseable: true
           owner: '{{ ansible_env.USER }}'
           group: '{{ ansible_env.USER }}'
           valid_users: '{{ ansible_env.USER }}'
@@ -40,28 +40,28 @@
 
   - role: git-tools
     vars:
-      git_aliases: on
-      git_rerere: on
-      git_editor_nano: on
-      git_prompt: on
-      git_archivestotext: on
-      git_docxtotext: on
-      git_pdftotext: on
-      git_xlsxtotext: on
+      git_aliases: true
+      git_rerere: true
+      git_editor_nano: true
+      git_prompt: true
+      git_archivestotext: true
+      git_docxtotext: true
+      git_pdftotext: true
+      git_xlsxtotext: true
 #      git_user_name: "Christian Lang"
 #      git_user_email: "lang.chr86@gmail.com"
 
   - role: docker
 #  - role: ansible-role-docmake
 #    vars:
-#      pandoc: on
-#      texlive_min: on
-#      texlive_additional: on
-#      markdownlint: on
-#      drawio: on
-#      gpp: on
-#      metropolis: on
-#      tikz_uml: on
+#      pandoc: true
+#      texlive_min: true
+#      texlive_additional: true
+#      markdownlint: true
+#      drawio: true
+#      gpp: true
+#      metropolis: true
+#      tikz_uml: true
 #      docmake_version: '35411f1'
   - role: okular
 

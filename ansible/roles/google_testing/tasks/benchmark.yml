@@ -1,5 +1,5 @@
 - name: Install google benchmark
-  become: yes
+  become: true
   shell: |
     cd /tmp
     mkdir benchmark

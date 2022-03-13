@@ -1,7 +1,7 @@
 ---
 
 - name: create java installation directory
-  become: yes
+  become: true
   file:
     state: directory
     owner: root
@@ -15,20 +15,20 @@
     jdk11_version_add: '9'
 
 - name: 'download jdk-{{ jdk11_version }}+{{ jdk11_version_add }}'
-  become: yes
+  become: true
   get_url:
     url: 'https://api.adoptopenjdk.net/v3/binary/version/jdk-{{ jdk11_version }}%2B{{ jdk11_version_add }}/linux/x64/jdk/hotspot/normal/adoptopenjdk?project=jdk'
     dest: '/opt/java/jdk-{{ jdk11_version }}.tar.gz'
-    force: no
-    use_proxy: yes
-    validate_certs: yes
+    force: false
+    use_proxy: true
+    validate_certs: true
     mode: 'u=rw,go=r'
 
 - name: install jdk 11
-  become: yes
+  become: true
   unarchive:
     src: '/opt/java/jdk-{{ jdk11_version }}.tar.gz'
-    remote_src: yes
+    remote_src: true
     dest: '/opt/java'
     owner: root
     group: root

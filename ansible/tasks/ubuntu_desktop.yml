@@ -1,15 +1,15 @@
 - name: Install Ubuntu Desktop
-  become: yes
+  become: true
   apt:
     name: ubuntu-desktop
 
 - name: Install Ubuntu Desktop missing dependencies (needed for vbox guest additions)
-  become: yes
+  become: true
   apt:
     name: linux-image-generic
 
 - name: Install psutil that is needed for dconf module below
-  become: yes
+  become: true
   apt:
     name: python3-psutil
 

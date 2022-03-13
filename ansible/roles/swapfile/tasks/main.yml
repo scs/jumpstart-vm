@@ -1,7 +1,7 @@
 # tasks file for swapfile
 ---
 - name: install dependencies
-  become: yes
+  become: true
   apt:
     name: "{{ swapfile_dependencies }}"
     state: "{{ apt_install_state | default('latest') }}"
@@ -16,7 +16,7 @@
 - block:
 
   - name: write swap file
-    become: yes
+    become: true
     command: >
       fallocate -l {{ swapfile_size }} {{ swapfile_file }}
     args:
@@ -27,7 +27,7 @@
       - swapfile-write-file
 
   - name: set swap file permissions
-    become: yes
+    become: true
     file:
       path: "{{ swapfile_file }}"
       owner: root
@@ -37,7 +37,7 @@
       - swapfile-set-file-permissions
 
   - name: create swap file
-    become: yes
+    become: true
     command: >
       mkswap {{ swapfile_file }}
     args:
@@ -48,7 +48,7 @@
       - swapfile-mkswap
 
   - name: enable swapfile
-    become: yes
+    become: true
     command: >
       swapon {{ swapfile_file }}
     args:
@@ -58,7 +58,7 @@
       - swapfile-enable-swapfile
 
   - name: add swapfile to /etc/fstab
-    become: yes
+    become: true
     mount:
       name: none
       src: "{{ swapfile_file }}"
@@ -77,7 +77,7 @@
     - swapfile
 
 - name: configure vm.swappiness
-  become: yes
+  become: true
   sysctl:
     name: vm.swappiness
     value: "{{ swapfile_swappiness }}"
@@ -90,7 +90,7 @@
     - swapfile-vm-swappiness
 
 - name: configure vm.vfs_cache_pressure
-  become: yes
+  become: true
   sysctl:
     name: vm.vfs_cache_pressure
     value: "{{ swapfile_vfs_cache_pressure }}"

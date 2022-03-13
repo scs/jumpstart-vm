@@ -1,5 +1,5 @@
 - name: Install build tools
-  become: yes
+  become: true
   package:
     name:
       - build-essential
@@ -15,7 +15,7 @@
       - libsystemd-dev
 
 - name: Install catch2
-  become: yes
+  become: true
   shell: |
     cd /tmp
     mkdir catch
@@ -31,7 +31,7 @@
     creates: /usr/local/include/catch2/catch.hpp
 
 - name: Install websocketpp
-  become: yes
+  become: true
   shell: |
     cd /tmp
     mkdir websocketpp
@@ -47,7 +47,7 @@
     creates: /usr/local/include/websocketpp/version.hpp
 
 - name: Install asio
-  become: yes
+  become: true
   shell: |
     cd /tmp
     mkdir asio
