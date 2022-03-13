@@ -1,0 +1,5 @@
+exclude_paths:
+  - roles/swapfile
+
+skip_list:
+  - line-length
