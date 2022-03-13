@@ -10,13 +10,13 @@
     state: directory
     mode: "u+rw"
   with_items:
-  - "{{ clion_download_directory }}"
-  - "{{ clion_install_directory }}"
+    - "{{ clion_download_directory }}"
+    - "{{ clion_install_directory }}"
 
 - name: Install CLion
   unarchive:
     copy: false
-    src: "{{ clion_download_url}}"
+    src: "{{ clion_download_url }}"
     dest: "{{ clion_install_directory }}"
     creates: "{{ clion_location }}/bin/clion.sh"
 

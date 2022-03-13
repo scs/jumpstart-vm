@@ -90,5 +90,5 @@
   - role: ansible-role-visual-studio-code
 
   post_tasks:
-  - include_tasks: tasks/intellij.yml
-  - include_tasks: tasks/ubuntu_cleanup.yml
+    - include_tasks: tasks/intellij.yml
+    - include_tasks: tasks/ubuntu_cleanup.yml

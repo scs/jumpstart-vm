@@ -16,4 +16,4 @@
     regexp: "\r\n"
     replace: "\n"
   with_items:
-  - "~/.tmux.conf"
+    - "~/.tmux.conf"
