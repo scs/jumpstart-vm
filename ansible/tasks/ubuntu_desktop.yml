@@ -1,3 +1,16 @@
+- name: Check if Ubuntu Desktop already installed
+  ansible.builtin.command: dpkg-query -l ubuntu-desktop
+  changed_when: false
+  failed_when: false
+  register: ubuntu_desktop
+
+- name: Ensure no incompatible version of 'python3-software-properties' is installed
+  become: true
+  apt:
+    name: python3-software-properties
+    state: absent
+  when: ubuntu_desktop.rc == 1
+
 - name: Install Ubuntu Desktop
   become: true
   apt:

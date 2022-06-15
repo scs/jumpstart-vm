@@ -1,11 +1,18 @@
-- name: Install DKMS and virtualbox additions
+- name: Download virtualbox additions ISO
   become: true
   package:
-    name:
-      - dkms
-      - virtualbox-guest-dkms
-      - virtualbox-guest-utils
-      - virtualbox-guest-x11
+    name: virtualbox-guest-additions-iso
+  register: vbadd_iso
+
+- name: Install virtualbox additions
+  become: true
+  shell: |
+    mkdir -p /media/vbadd
+    mount /usr/share/virtualbox/VBoxGuestAdditions.iso /media/vbadd/
+    /media/vbadd/VBoxLinuxAdditions.run
+    umount /media/vbadd/
+    rm -rf /media/vbadd/
+  when: vbadd_iso.changed
 
 - name: Add user to vboxsf group to have access to bind mounts
   become: true

@@ -17,7 +17,7 @@ Wir verwenden die neuste Version von Virtualbox as Hypervisor für die VM:
 Nach der Installation von Virtualbox kann eine neue Linux-VM erstellt
 und mit der Installation von Ubuntu begonnen werden.
 
-* Neustes LTS Image von Ubuntu Desktop herunterladen: [ubuntu-desktop-20.04](https://ubuntu.com/download/desktop)
+* Genau dieses LTS Image von Ubuntu Desktop herunterladen: [ubuntu-desktop-22.04](https://ubuntu.com/download/desktop)
 * In Virtualbox eine neue VM erstellen
   * Name: jumpstart-vm
   * Typ: Linux
