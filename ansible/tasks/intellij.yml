@@ -9,3 +9,4 @@
     state=present
     insertafter=EOF
     create=True
+    mode="o=rw,go=r"
