@@ -7,6 +7,7 @@
     state=present
     insertafter=EOF
     create=True
+    mode="o=rw"
   with_items:
     - {regexp: '^APT::Periodic::Update-Package-Lists', line: 'APT::Periodic::Update-Package-Lists "0";'}
     - {regexp: '^APT::Periodic::Unattended-Upgrade', line: 'APT::Periodic::Unattended-Upgrade "0";'}
@@ -23,3 +24,4 @@
   ignore_errors: true
   failed_when: false
   with_items: "{{ apt_processes.stdout_lines }}"
+  changed_when: apt_processes.stdout_lines | length > 0

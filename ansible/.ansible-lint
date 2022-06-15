@@ -2,4 +2,9 @@ exclude_paths:
   - roles/swapfile
 
 skip_list:
-  - line-length
+  - command-instead-of-shell
+  - deprecated-command-syntax
+  - ignore-errors
+  - no-handler
+  - risky-shell-pipe
+  - yaml[line-length]
