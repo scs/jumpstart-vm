@@ -11,5 +11,5 @@
       - pkg-config
       - valgrind
       - gcovr
-      - python
+      - python3
       - libsystemd-dev
