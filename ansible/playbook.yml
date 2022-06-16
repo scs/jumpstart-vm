@@ -48,8 +48,8 @@
       git_docxtotext: true
       git_pdftotext: true
       git_xlsxtotext: true
-#      git_user_name: "Christian Lang"
-#      git_user_email: "lang.chr86@gmail.com"
+      git_user_name: "Hans Jumpstart"
+      git_user_email: "jumpstart@jumpstart.com"
 
   - role: docker
 #  - role: ansible-role-docmake
