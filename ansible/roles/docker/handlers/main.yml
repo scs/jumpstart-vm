@@ -2,6 +2,6 @@
 
 - name: restart_docker
   become: true
-  service:
+  ansible.builtin.service:
     name: docker
     state: restarted

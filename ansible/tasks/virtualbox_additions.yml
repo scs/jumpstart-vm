@@ -1,12 +1,12 @@
 - name: Download virtualbox additions ISO
   become: true
-  package:
+  ansible.builtin.package:
     name: virtualbox-guest-additions-iso
   register: vbadd_iso
 
 - name: Install virtualbox additions
   become: true
-  shell: |
+  ansible.builtin.shell: |
     mkdir -p /media/vbadd
     mount /usr/share/virtualbox/VBoxGuestAdditions.iso /media/vbadd/
     /media/vbadd/VBoxLinuxAdditions.run
@@ -16,7 +16,7 @@
 
 - name: Add user to vboxsf group to have access to bind mounts
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_env.USER }}"
     append: true
     groups: vboxsf

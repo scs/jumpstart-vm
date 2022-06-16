@@ -1,17 +1,17 @@
 - name: Install tmux tools
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - tmux
 
 - name: Add tmux config
-  copy:
+  ansible.builtin.copy:
     src: .tmux.conf
     dest: "~/"
     mode: "u+rw"
 
 - name: Ensure Unix line endings
-  replace:
+  ansible.builtin.replace:
     path: "{{ item }}"
     regexp: "\r\n"
     replace: "\n"

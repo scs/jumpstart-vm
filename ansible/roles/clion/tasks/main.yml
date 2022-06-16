@@ -1,11 +1,11 @@
 - name: Install dependency for CLion markdown plugin
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - openjfx
 
 - name: Create directories for CLion
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     mode: "u+rw"
@@ -14,7 +14,7 @@
     - "{{ clion_install_directory }}"
 
 - name: Install CLion
-  unarchive:
+  ansible.builtin.unarchive:
     copy: false
     src: "{{ clion_download_url }}"
     dest: "{{ clion_install_directory }}"
@@ -22,7 +22,7 @@
 
 - name: Add clion alias for all user profiles
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest="/etc/profile.d/clion.sh"
     line="alias clion='{{ clion_location }}/bin/clion.sh &>/dev/null'"
     regexp='^alias clion='
@@ -32,19 +32,19 @@
     mode="ugo+rw"
 
 - name: create local .local/share/applications folder
-  file:
+  ansible.builtin.file:
     dest: "{{ ansible_env.HOME }}/.local/share/applications/"
     state: directory
     mode: "u+rw"
 
 - name: Add clion desktop file
-  template:
+  ansible.builtin.template:
     dest: "{{ ansible_env.HOME }}/.local/share/applications/jetbrains-clion.desktop"
     src: "jetbrains-clion.desktop"
     mode: "u+rw"
 
 - name: Define a high number of inotify watches
   become: true
-  sysctl:
+  ansible.builtin.sysctl:
     name: fs.inotify.max_user_watches
     value: "524288"

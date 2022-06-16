@@ -2,7 +2,7 @@
 ---
 - name: install dependencies
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "{{ swapfile_dependencies }}"
     state: "{{ apt_install_state | default('latest') }}"
     update_cache: true
@@ -17,7 +17,7 @@
 
   - name: write swap file
     become: true
-    command: >
+    ansible.builtin.command: >
       fallocate -l {{ swapfile_size }} {{ swapfile_file }}
     args:
       creates: "{{ swapfile_file }}"
@@ -28,7 +28,7 @@
 
   - name: set swap file permissions
     become: true
-    file:
+    ansible.builtin.file:
       path: "{{ swapfile_file }}"
       owner: root
       group: root
@@ -38,7 +38,7 @@
 
   - name: create swap file
     become: true
-    command: >
+    ansible.builtin.command: >
       mkswap {{ swapfile_file }}
     args:
       warn: false
@@ -49,7 +49,7 @@
 
   - name: enable swapfile
     become: true
-    command: >
+    ansible.builtin.command: >
       swapon {{ swapfile_file }}
     args:
       warn: false
@@ -59,7 +59,7 @@
 
   - name: add swapfile to /etc/fstab
     become: true
-    mount:
+    ansible.builtin.mount:
       name: none
       src: "{{ swapfile_file }}"
       fstype: swap
@@ -78,7 +78,7 @@
 
 - name: configure vm.swappiness
   become: true
-  sysctl:
+  ansible.builtin.sysctl:
     name: vm.swappiness
     value: "{{ swapfile_swappiness }}"
     reload: true
@@ -91,7 +91,7 @@
 
 - name: configure vm.vfs_cache_pressure
   become: true
-  sysctl:
+  ansible.builtin.sysctl:
     name: vm.vfs_cache_pressure
     value: "{{ swapfile_vfs_cache_pressure }}"
     reload: true

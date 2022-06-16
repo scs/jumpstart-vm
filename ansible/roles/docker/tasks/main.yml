@@ -2,7 +2,7 @@
 
 - name: Install docker.io and dependencies
   become: true
-  apt:
+  ansible.builtin.apt:
     name:
       - apt-transport-https
       - ca-certificates
@@ -13,19 +13,19 @@
 
 - name: Create group docker
   become: true
-  group:
+  ansible.builtin.group:
     name: docker
 
 - name: Add docker user to docker group
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_env.USER }}"
     append: true
     groups: docker
 
 - name: "Add docker daemon network config: {{ docker_daemon_config_folder }}/daemon.json"
   become: true
-  copy:
+  ansible.builtin.copy:
     src: daemon.json
     dest: "{{ docker_daemon_config_folder }}/daemon.json"
     mode: 0644
