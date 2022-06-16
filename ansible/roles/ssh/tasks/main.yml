@@ -1,6 +1,6 @@
 - name: Install ssh tools
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - xorg
       - xauth
@@ -9,7 +9,7 @@
 
 - name: Add authorized keys
   become: true
-  authorized_key:
+  ansible.builtin.authorized_key:
     user: "{{ ansible_env.USER }}"
     state: present
     key: "{{ lookup('file', '{{ item }}') }}"

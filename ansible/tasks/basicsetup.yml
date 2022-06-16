@@ -1,6 +1,6 @@
 - name: Install basic tools
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - tree
       - nano
@@ -14,23 +14,23 @@
 
 - name: Install X11 base
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - xbase-clients
       - x11-common
 
 - name: Set timezone to Europe/Zurich
   become: true
-  timezone:
+  ansible.builtin.timezone:
     name: Europe/Zurich
 
 - name: Set locale to en_US.UTF-8
   become: true
-  locale_gen:
+  ansible.builtin.locale_gen:
     name: en_US.UTF-8
 
 - name: Set default locale to en_US.UTF-8
   become: true
-  lineinfile: dest=/etc/default/locale
+  ansible.builtin.lineinfile: dest=/etc/default/locale
     regexp="LC_ALL"
     line="LC_ALL=\"en_US.UTF-8\""
