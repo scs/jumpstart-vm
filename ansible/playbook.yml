@@ -43,10 +43,10 @@
       git_rerere: true
       git_editor_nano: true
       git_prompt: true
-      git_archivestotext: true
-      git_docxtotext: true
+      git_archivestotext: false
+      git_docxtotext: false
       git_pdftotext: true
-      git_xlsxtotext: true
+      git_xlsxtotext: false
       git_user_name: "Hans Jumpstart"
       git_user_email: "jumpstart@jumpstart.com"
 
