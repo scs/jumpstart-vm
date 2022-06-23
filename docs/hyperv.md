@@ -40,15 +40,24 @@ und mit der Installation von Ubuntu begonnen werden.
   * Username: vagrant
   * Password vagrant
 * VM neu starten (Boot-Medium wird automatisch entfernt)
-* Tools installieren
-  * Konsole öffnen
+* Tools installieren:
+  * Konsole öffnen (`Terminal`)
   * `sudo apt update`
   * `sudo apt install -y git openssh-server`
   * Ab jetzt kann auch [headless](./headless.md) gearbeitet werden.
   * `git clone https://github.com/scs/jumpstart-vm.git`
   * `cd jumpstart-vm`
-  * `./provision.sh`
-  * Falls hier irgendwelche Fehler auftreten, einfach nochmals oder zuerst mit `sudo apt udpate && sudo apt upgrade -y` versuchen
+  * `./provision.sh`. Achtung: Dieser Schritt installiert sehr viele Pakete in der VM
+    und dauert entsprechend sehr lange.
+  * Abhängig von der Internetverbindung kann das mehr als 30 Minuten dauern.
+  * Falls der Schritt fehlschlägt,
+    zuerst mit `sudo apt udpate && sudo apt upgrade -y` alle existierenden Pakete updaten
+    und dann nochmals mit `./provision.sh` versuchen.
+  * Wenn alles gut läuft müsste am Schluss eine ähnliche Zeile erscheinen die zwingend `failed=0` anzeigt:
+    ~~~~~~
+    PLAY RECAP ************************************************************************************************
+    127.0.0.1           : ok=144  changed=29   unreachable=0    failed=0    skipped=32   rescued=0    ignored=0
+    ~~~~~~
 * VM neu starten`
 
 
