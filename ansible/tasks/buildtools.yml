@@ -10,6 +10,4 @@
       - autoconf
       - pkg-config
       - valgrind
-      - gcovr
       - python3
-      - libsystemd-dev
