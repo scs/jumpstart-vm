@@ -15,3 +15,15 @@
     key: "{{ lookup('file', '{{ item }}') }}"
   with_items:
     - "{{ ssh_pub_files }}"
+
+- name: Allow legacy ssh-rsa key encryption
+  become: true
+  ansible.builtin.lineinfile:
+    dest="/etc/ssh/sshd_config.d/legacy_pubkey_types.conf"
+    line="PubkeyAcceptedKeyTypes +ssh-rsa"
+    regexp="^PubkeyAcceptedKeyTypes"
+    state=present
+    insertafter=EOF
+    create=True
+    mode='0644'
+  notify: restart_sshd
