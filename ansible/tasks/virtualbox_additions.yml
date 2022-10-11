@@ -14,6 +14,11 @@
     rm -rf /media/vbadd/
   when: vbadd_iso.changed
 
+- name: Create group vboxsf
+  become: true
+  ansible.builtin.group:
+    name: vboxsf
+
 - name: Add user to vboxsf group to have access to bind mounts
   become: true
   ansible.builtin.user:
