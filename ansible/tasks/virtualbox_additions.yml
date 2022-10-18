@@ -2,17 +2,21 @@
   become: true
   ansible.builtin.package:
     name: virtualbox-guest-additions-iso
-  register: vbadd_iso
+
+- name: Create virtualbox additions mount point
+  become: true
+  ansible.builtin.file:
+    dest: /media/vbadd
+    state: directory
 
 - name: Install virtualbox additions
   become: true
   ansible.builtin.shell: |
-    mkdir -p /media/vbadd
     mount /usr/share/virtualbox/VBoxGuestAdditions.iso /media/vbadd/
-    /media/vbadd/VBoxLinuxAdditions.run
+    /media/vbadd/VBoxLinuxAdditions.run --nox11
     umount /media/vbadd/
-    rm -rf /media/vbadd/
-  when: vbadd_iso.changed
+  args:
+    creates: /usr/sbin/VBoxService
 
 - name: Create group vboxsf
   become: true
