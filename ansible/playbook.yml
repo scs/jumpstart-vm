@@ -11,7 +11,7 @@
   roles:
   - role: ssh
     vars:
-      ssh_pub_files: ['ssh_key_clang_home.opub', 'rsa-key-clang-scs-20170919.opub']
+      ssh_pub_files: ['eddsa-key-clang-privat-20220905.opub', 'eddsa-key-clang-scs-20220830.opub']
 
   - role: swapfile
     vars:
