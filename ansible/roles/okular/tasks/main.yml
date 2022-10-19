@@ -1,11 +1,11 @@
 ---
 
-- name: install okular
+- name: Install okular
   become: true
   ansible.builtin.package:
     name: okular
 
-- name: set okular as default pdf viewer
+- name: Set okular as default pdf viewer
   become: true
   ansible.builtin.lineinfile:
     dest: "/etc/gnome/defaults.list"

@@ -1,6 +1,6 @@
 # tasks file for swapfile
 ---
-- name: install dependencies
+- name: Install dependencies
   become: true
   ansible.builtin.apt:
     name: "{{ swapfile_dependencies }}"
@@ -15,7 +15,7 @@
 
 - block:
 
-  - name: write swap file
+  - name: Write swap file
     become: true
     ansible.builtin.command: >
       fallocate -l {{ swapfile_size }} {{ swapfile_file }}
@@ -36,7 +36,7 @@
     tags:
       - swapfile-set-file-permissions
 
-  - name: create swap file
+  - name: Create swap file
     become: true
     ansible.builtin.command: >
       mkswap {{ swapfile_file }}
@@ -47,7 +47,7 @@
     tags:
       - swapfile-mkswap
 
-  - name: enable swapfile
+  - name: Enable swapfile
     become: true
     ansible.builtin.command: >
       swapon {{ swapfile_file }}
@@ -57,7 +57,7 @@
     tags:
       - swapfile-enable-swapfile
 
-  - name: add swapfile to /etc/fstab
+  - name: Add swapfile to /etc/fstab
     become: true
     ansible.builtin.mount:
       name: none
@@ -76,7 +76,7 @@
     - configuration
     - swapfile
 
-- name: configure vm.swappiness
+- name: Configure vm.swappiness
   become: true
   ansible.builtin.sysctl:
     name: vm.swappiness
@@ -89,7 +89,7 @@
     - swapfile
     - swapfile-vm-swappiness
 
-- name: configure vm.vfs_cache_pressure
+- name: Configure vm.vfs_cache_pressure
   become: true
   ansible.builtin.sysctl:
     name: vm.vfs_cache_pressure

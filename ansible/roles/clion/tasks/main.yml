@@ -31,7 +31,7 @@
     create=True
     mode="ugo+rw"
 
-- name: create local .local/share/applications folder
+- name: Create local .local/share/applications folder
   ansible.builtin.file:
     dest: "{{ ansible_env.HOME }}/.local/share/applications/"
     state: directory

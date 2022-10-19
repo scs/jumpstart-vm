@@ -1,6 +1,6 @@
 ---
 
-- name: create java installation directory
+- name: Create java installation directory
   become: true
   ansible.builtin.file:
     state: directory
@@ -9,12 +9,12 @@
     mode: 'u=rwx,go=rx'
     dest: '/opt/java'
 
-- name: set facts for openjdk version
+- name: Set facts for openjdk version
   ansible.builtin.set_fact:
     jdk11_version: '11.0.11'
     jdk11_version_add: '9'
 
-- name: 'download jdk-{{ jdk11_version }}+{{ jdk11_version_add }}'
+- name: 'Download jdk-{{ jdk11_version }}+{{ jdk11_version_add }}'
   become: true
   ansible.builtin.get_url:
     url: 'https://api.adoptopenjdk.net/v3/binary/version/jdk-{{ jdk11_version }}%2B{{ jdk11_version_add }}/linux/x64/jdk/hotspot/normal/adoptopenjdk?project=jdk'
@@ -24,7 +24,7 @@
     validate_certs: true
     mode: 'u=rw,go=r'
 
-- name: install jdk 11
+- name: Install jdk 11
   become: true
   ansible.builtin.unarchive:
     src: '/opt/java/jdk-{{ jdk11_version }}.tar.gz'
@@ -35,6 +35,6 @@
     mode: 'o-w'
     creates: '/opt/java/jdk-{{ jdk11_version }}+{{ jdk11_version_add }}/bin'
 
-- name: set facts for openjdk locations
+- name: Set facts for openjdk locations
   ansible.builtin.set_fact:
     jdk11_home: '/opt/java/jdk-{{ jdk11_version }}+{{ jdk11_version_add }}'

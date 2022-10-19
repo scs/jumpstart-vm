@@ -30,4 +30,4 @@
     dest: "{{ docker_daemon_config_folder }}/daemon.json"
     mode: 0644
   notify:
-    - restart_docker
+    - RestartDocker

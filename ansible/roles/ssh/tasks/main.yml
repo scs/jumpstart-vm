@@ -26,4 +26,4 @@
     insertafter=EOF
     create=True
     mode='0644'
-  notify: restart_sshd
+  notify: RestartSshd
