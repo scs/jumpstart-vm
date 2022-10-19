@@ -5,6 +5,9 @@ skip_list:
   - command-instead-of-shell
   - deprecated-command-syntax
   - ignore-errors
+  - name[missing]
+  - name[play]
+  - name[template]
   - no-handler
   - risky-shell-pipe
   - yaml[line-length]

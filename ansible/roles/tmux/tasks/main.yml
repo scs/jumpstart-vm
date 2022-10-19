@@ -7,13 +7,11 @@
 - name: Add tmux config
   ansible.builtin.copy:
     src: .tmux.conf
-    dest: "~/"
+    dest: "{{ ansible_env.HOME }}"
     mode: "u+rw"
 
 - name: Ensure Unix line endings
   ansible.builtin.replace:
-    path: "{{ item }}"
+    path: "{{ ansible_env.HOME }}/.tmux.conf"
     regexp: "\r\n"
-    replace: "\n"
-  with_items:
-    - "~/.tmux.conf"
+    replace: "\n" # noqa jinja[spacing]
