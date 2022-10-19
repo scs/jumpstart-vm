@@ -12,7 +12,7 @@ RUN apt-get update \
 
 RUN pip3 install \
   ansible \
-  ansible-lint \
-  yamllint
+  ansible_lint==6.8.1 \
+  yamllint==1.28.0
 
 WORKDIR /ansible
