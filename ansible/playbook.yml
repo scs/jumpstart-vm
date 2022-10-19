@@ -1,12 +1,12 @@
 - hosts: all
 
   pre_tasks:
-  - include_tasks: tasks/ubuntu_apt.yml
-  - include_tasks: tasks/ubuntu_desktop.yml
-  - include_tasks: tasks/virtualbox_additions.yml
-  - include_tasks: tasks/basicsetup.yml
-  - include_tasks: tasks/buildtools.yml
-  - include_tasks: tasks/java.yml
+  - ansible.builtin.include_tasks: tasks/ubuntu_apt.yml
+  - ansible.builtin.include_tasks: tasks/ubuntu_desktop.yml
+  - ansible.builtin.include_tasks: tasks/virtualbox_additions.yml
+  - ansible.builtin.include_tasks: tasks/basicsetup.yml
+  - ansible.builtin.include_tasks: tasks/buildtools.yml
+  - ansible.builtin.include_tasks: tasks/java.yml
 
   roles:
   - role: ssh
@@ -89,5 +89,5 @@
   - role: ansible-role-visual-studio-code
 
   post_tasks:
-    - include_tasks: tasks/intellij.yml
-    - include_tasks: tasks/ubuntu_cleanup.yml
+    - ansible.builtin.include_tasks: tasks/intellij.yml
+    - ansible.builtin.include_tasks: tasks/ubuntu_cleanup.yml
