@@ -19,11 +19,10 @@
 - name: Allow legacy ssh-rsa key encryption
   become: true
   ansible.builtin.lineinfile:
-    dest="/etc/ssh/sshd_config.d/legacy_pubkey_types.conf"
-    line="PubkeyAcceptedKeyTypes +ssh-rsa"
-    regexp="^PubkeyAcceptedKeyTypes"
-    state=present
-    insertafter=EOF
-    create=True
-    mode='0644'
+    path: "/etc/ssh/sshd_config.d/legacy_pubkey_types.conf"
+    line: "PubkeyAcceptedKeyTypes +ssh-rsa"
+    regexp: "^PubkeyAcceptedKeyTypes"
+    insertafter: EOF
+    create: true
+    mode: '0644'
   notify: RestartSshd

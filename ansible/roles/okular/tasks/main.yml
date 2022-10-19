@@ -8,6 +8,6 @@
 - name: Set okular as default pdf viewer
   become: true
   ansible.builtin.lineinfile:
-    dest: "/etc/gnome/defaults.list"
+    path: "/etc/gnome/defaults.list"
     regexp: "^application/pdf="
     line: "application/pdf=okular.desktop"

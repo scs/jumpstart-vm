@@ -23,13 +23,12 @@
 - name: Add clion alias for all user profiles
   become: true
   ansible.builtin.lineinfile:
-    dest="/etc/profile.d/clion.sh"
-    line="alias clion='{{ clion_location }}/bin/clion.sh &>/dev/null'"
-    regexp='^alias clion='
-    state=present
-    insertafter=EOF
-    create=True
-    mode="ugo+rw"
+    path: "/etc/profile.d/clion.sh"
+    line: "alias clion='{{ clion_location }}/bin/clion.sh &>/dev/null'"
+    regexp: '^alias clion='
+    insertafter: EOF
+    create: true
+    mode: "ugo+rw"
 
 - name: Create local .local/share/applications folder
   ansible.builtin.file:
