@@ -27,7 +27,7 @@ und mit der Installation von Ubuntu begonnen werden.
 * VM konfigurieren: Ändern
   * Netzwerk -> Adapter 2 -> aktivieren -> Host-only Adapter
   * System -> Prozessor -> sinnvolle Anzahl wählen (maximal so viele wie Arbeitsspeicher in GB)
-  * Anzeige -> Grafikspeicher: 128MB, 3D-Beschleunigung aktivieren
+  * Anzeige -> 3D-Beschleunigung deaktivieren
 * VM starten
   * Ubuntu .iso als Boot-Medium anwählen
   * "Install Ubuntu"
