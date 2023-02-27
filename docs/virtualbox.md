@@ -24,6 +24,7 @@ und mit der Installation von Ubuntu begonnen werden.
   * Version: Ubuntu 64-bit
   * mind. 4GB RAM
   * mind. 64GB Harddisk
+  * `Unbeaufsichtigte Installation überspringen` aktivieren
 * VM konfigurieren: Ändern
   * Netzwerk -> Adapter 2 -> aktivieren -> Host-only Adapter
   * System -> Prozessor -> sinnvolle Anzahl wählen (maximal so viele wie Arbeitsspeicher in GB)
