@@ -1,3 +1,5 @@
 ---
 
 docker_daemon_config_folder: "/etc/docker"
+docker_plugins_folder: "/usr/lib/docker/cli-plugins"
+docker_compose_url: "https://github.com/docker/compose/releases/download/v2.16.0/docker-compose-linux-x86_64"
