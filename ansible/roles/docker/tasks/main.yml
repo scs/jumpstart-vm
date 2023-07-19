@@ -41,6 +41,6 @@
   ansible.builtin.copy:
     src: daemon.json
     dest: "{{ docker_daemon_config_folder }}/daemon.json"
-    mode: 0644
+    mode: "644"
   notify:
     - RestartDocker

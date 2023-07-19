@@ -24,5 +24,5 @@
     regexp: "^PubkeyAcceptedKeyTypes"
     insertafter: EOF
     create: true
-    mode: '0644'
+    mode: "644"
   notify: RestartSshd
