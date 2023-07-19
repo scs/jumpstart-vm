@@ -1,92 +1,92 @@
 - hosts: all
 
   pre_tasks:
-  - ansible.builtin.include_tasks: tasks/ubuntu_apt.yml
-  - ansible.builtin.include_tasks: tasks/ubuntu_desktop.yml
-  - ansible.builtin.include_tasks: tasks/virtualbox_additions.yml
-  - ansible.builtin.include_tasks: tasks/basicsetup.yml
-  - ansible.builtin.include_tasks: tasks/buildtools.yml
-  - ansible.builtin.include_tasks: tasks/java.yml
+    - ansible.builtin.include_tasks: tasks/ubuntu_apt.yml
+    - ansible.builtin.include_tasks: tasks/ubuntu_desktop.yml
+    - ansible.builtin.include_tasks: tasks/virtualbox_additions.yml
+    - ansible.builtin.include_tasks: tasks/basicsetup.yml
+    - ansible.builtin.include_tasks: tasks/buildtools.yml
+    - ansible.builtin.include_tasks: tasks/java.yml
 
   roles:
-  - role: ssh
-    vars:
-      ssh_pub_files: ['eddsa-key-clang-privat-20220905.opub', 'eddsa-key-clang-scs-20220830.opub']
+    - role: ssh
+      vars:
+        ssh_pub_files: ['eddsa-key-clang-privat-20220905.opub', 'eddsa-key-clang-scs-20220830.opub']
 
-  - role: swapfile
-    vars:
-      swapfile_size: 4G
+    - role: swapfile
+      vars:
+        swapfile_size: 4G
 
-  - role: ansible-role-samba
-    become: true
-    vars:
-      samba_mitigate_cve_2017_7494: false
-      samba_users:
-        - name: '{{ ansible_env.USER }}'
-          password: '{{ ansible_env.USER }}'
-      samba_shares:
-        - name: vagrant-home
-          path: '{{ ansible_env.HOME }}'
-          browseable: true
-          owner: '{{ ansible_env.USER }}'
-          group: '{{ ansible_env.USER }}'
-          valid_users: '{{ ansible_env.USER }}'
-          write_list: '{{ ansible_env.USER }}'
+    - role: ansible-role-samba
+      become: true
+      vars:
+        samba_mitigate_cve_2017_7494: false
+        samba_users:
+          - name: '{{ ansible_env.USER }}'
+            password: '{{ ansible_env.USER }}'
+        samba_shares:
+          - name: vagrant-home
+            path: '{{ ansible_env.HOME }}'
+            browseable: true
+            owner: '{{ ansible_env.USER }}'
+            group: '{{ ansible_env.USER }}'
+            valid_users: '{{ ansible_env.USER }}'
+            write_list: '{{ ansible_env.USER }}'
 
-  - role: bash
-  - role: tmux
-  - role: clion
+    - role: bash
+    - role: tmux
+    - role: clion
 
-  - role: git-tools
-    vars:
-      git_aliases: true
-      git_rerere: true
-      git_editor_nano: true
-      git_prompt: true
-      git_archivestotext: false
-      git_docxtotext: false
-      git_pdftotext: true
-      git_xlsxtotext: false
-      git_user_name: "Hans Jumpstart"
-      git_user_email: "jumpstart@jumpstart.com"
+    - role: git-tools
+      vars:
+        git_aliases: true
+        git_rerere: true
+        git_editor_nano: true
+        git_prompt: true
+        git_archivestotext: false
+        git_docxtotext: false
+        git_pdftotext: true
+        git_xlsxtotext: false
+        git_user_name: "Hans Jumpstart"
+        git_user_email: "jumpstart@jumpstart.com"
 
-  - role: docker
-#  - role: ansible-role-docmake
-#    vars:
-#      pandoc: true
-#      texlive_min: true
-#      texlive_additional: true
-#      markdownlint: true
-#      drawio: true
-#      gpp: true
-#      metropolis: true
-#      tikz_uml: true
-#      docmake_version: '35411f1'
-  - role: okular
+    - role: docker
+#   - role: ansible-role-docmake
+#     vars:
+#       pandoc: true
+#       texlive_min: true
+#       texlive_additional: true
+#       markdownlint: true
+#       drawio: true
+#       gpp: true
+#       metropolis: true
+#       tikz_uml: true
+#       docmake_version: '35411f1'
+    - role: okular
 
-  - role: ansible-role-intellij
-    vars:
-      intellij_version: '2021.3.1'
-      intellij_edition: 'community'
-      users:
-        - username: '{{ ansible_env.USER }}'
-          intellij_jdks:
-            - name: '11'
-              home: '{{ jdk11_home }}'
-          intellij_default_jdk: '11'
-          intellij_disabled_plugins:
-            - org.jetbrains.plugins.gradle
-            - CVS
-            - com.intellij.uiDesigner
-            - org.jetbrains.android
-            - TestNG-J
-            - hg4idea
-            - Subversion
-            - AntSupport
-            - DevKit
-            - Kotlin
+    - role: ansible-role-intellij
+      vars:
+        intellij_version: '2021.3.1'
+        intellij_edition: 'community'
+        users:
+          - username: '{{ ansible_env.USER }}'
+            intellij_jdks:
+              - name: '11'
+                home: '{{ jdk11_home }}'
+            intellij_default_jdk: '11'
+            intellij_disabled_plugins:
+              - org.jetbrains.plugins.gradle
+              - CVS
+              - com.intellij.uiDesigner
+              - org.jetbrains.android
+              - TestNG-J
+              - hg4idea
+              - Subversion
+              - AntSupport
+              - DevKit
+              - Kotlin
 
-  - role: ansible-role-visual-studio-code
+    - role: ansible-role-visual-studio-code
 
   post_tasks:
     - ansible.builtin.include_tasks: tasks/intellij.yml
