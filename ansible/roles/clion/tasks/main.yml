@@ -44,6 +44,6 @@
 
 - name: Define a high number of inotify watches
   become: true
-  ansible.builtin.sysctl:
+  ansible.posix.sysctl:
     name: fs.inotify.max_user_watches
     value: "524288"

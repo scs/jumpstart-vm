@@ -27,11 +27,11 @@
     name: python3-psutil
 
 - name: Define all gnome favorite apps
-  ansible.builtin.dconf:
+  community.general.dconf:
     key: "/org/gnome/shell/favorite-apps"
     value: "['org.gnome.Nautilus.desktop', 'firefox.desktop', 'org.gnome.Terminal.desktop', 'jetbrains-clion.desktop', 'jetbrains-idea-ce.desktop', 'code.desktop']"
 
 - name: Add german keyboard layouts
-  ansible.builtin.dconf:
+  community.general.dconf:
     key: "/org/gnome/desktop/input-sources/sources"
     value: "[('xkb', 'ch'), ('xkb', 'us')]"
