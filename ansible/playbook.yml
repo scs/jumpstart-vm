@@ -66,7 +66,7 @@
 
     - role: ansible-role-intellij
       vars:
-        intellij_version: '2021.3.1'
+        intellij_version: '2023.1.4'
         intellij_edition: 'community'
         users:
           - username: '{{ ansible_env.USER }}'
