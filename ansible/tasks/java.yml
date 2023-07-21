@@ -11,30 +11,36 @@
 
 - name: Set facts for openjdk version
   ansible.builtin.set_fact:
-    jdk11_version: '11.0.11'
-    jdk11_version_add: '9'
+    jdk_major_version: '17'
+    jdk_minor_version: '0'
+    jdk_patch_version: '8'
+    jdk_build: '7'
 
-- name: 'Download jdk-{{ jdk11_version }}+{{ jdk11_version_add }}'
+- name: Set facts for combined jdk version strings
+  ansible.builtin.set_fact:
+    jdk_version_string: '{{ jdk_major_version }}.{{ jdk_minor_version }}.{{ jdk_patch_version }}'
+
+- name: 'Download jdk-{{ jdk_version_string }}+{{ jdk_build }}'
   become: true
   ansible.builtin.get_url:
-    url: 'https://api.adoptopenjdk.net/v3/binary/version/jdk-{{ jdk11_version }}%2B{{ jdk11_version_add }}/linux/x64/jdk/hotspot/normal/adoptopenjdk?project=jdk'
-    dest: '/opt/java/jdk-{{ jdk11_version }}.tar.gz'
+    url: 'https://github.com/adoptium/temurin{{ jdk_major_version }}-binaries/releases/download/jdk-{{ jdk_version_string }}%2B{{ jdk_build }}/OpenJDK{{ jdk_major_version }}U-jdk_x64_linux_hotspot_{{ jdk_version_string }}_{{ jdk_build }}.tar.gz'
+    dest: '/opt/java/jdk-{{ jdk_version_string }}.tar.gz'
     force: false
     use_proxy: true
     validate_certs: true
     mode: 'u=rw,go=r'
 
-- name: Install jdk 11
+- name: Install jdk
   become: true
   ansible.builtin.unarchive:
-    src: '/opt/java/jdk-{{ jdk11_version }}.tar.gz'
+    src: '/opt/java/jdk-{{ jdk_version_string }}.tar.gz'
     remote_src: true
     dest: '/opt/java'
     owner: root
     group: root
     mode: 'o-w'
-    creates: '/opt/java/jdk-{{ jdk11_version }}+{{ jdk11_version_add }}/bin'
+    creates: '/opt/java/jdk-{{ jdk_version_string }}+{{ jdk_build }}/bin'
 
 - name: Set facts for openjdk locations
   ansible.builtin.set_fact:
-    jdk11_home: '/opt/java/jdk-{{ jdk11_version }}+{{ jdk11_version_add }}'
+    jdk_home: '/opt/java/jdk-{{ jdk_version_string }}+{{ jdk_build }}'
