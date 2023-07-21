@@ -1,0 +1,8 @@
+- name: Check if running in wsl 2
+  ansible.builtin.shell: uname -a | grep "WSL"
+  ignore_errors: true
+  changed_when: true
+  register: wsl_is_wsl_command
+- name: Set facts if running in wsl
+  ansible.builtin.set_fact:
+    wsl_is_wsl: '{{ true if (wsl_is_wsl_command.rc == 0) else false }}'
