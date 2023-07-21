@@ -71,9 +71,9 @@
         users:
           - username: '{{ ansible_env.USER }}'
             intellij_jdks:
-              - name: '11'
-                home: '{{ jdk11_home }}'
-            intellij_default_jdk: '11'
+              - name: '17'
+                home: '{{ jdk_home }}'
+            intellij_default_jdk: '17'
             intellij_disabled_plugins:
               - org.jetbrains.plugins.gradle
               - CVS
