@@ -1,5 +1,7 @@
 ---
 
+# The currently used version is the last one that is easily enabled for a test period of 30 days.
+# Newer versions need a jetbrains account
 clion_version: 2021.2
 clion_download_mirror: https://download.jetbrains.com/cpp/
 clion_download_directory: /tmp
