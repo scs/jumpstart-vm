@@ -1,6 +1,6 @@
 name: vagrant-up
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   vagrant-up:
