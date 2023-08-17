@@ -12,9 +12,6 @@ Installation
 Hyper-V ist ein Window-Feature dass nur noch aktiviert werden muss:
 [enable-hyper-v](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
 
-Wir verwenden die neuste Version von Virtualbox as Hypervisor für die VM:
-[VirtualBox Downloads](https://www.virtualbox.org/wiki/Downloads)
-
 Nach der Aktivierung von Hyper-V kann eine neue Linux-VM erstellt
 und mit der Installation von Ubuntu begonnen werden.
 
