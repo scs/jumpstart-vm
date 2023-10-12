@@ -19,7 +19,7 @@ und mit der Installation von Ubuntu begonnen werden.
 * In Hyper-V-Manager eine neue VM erstellen
   * Name: jumpstart-vm
   * Typ: Generation 2
-  * Arbeitsspeicher beim Start: 1024
+  * Arbeitsspeicher beim Start: 2048
   * Netzwerk Verbindung: Default Switch
   * Festplatten Grösse: 64 GB
   * Betriebssystem von ISO installieren (hier das heruntergeladene Ubuntu ISO auswählen)
