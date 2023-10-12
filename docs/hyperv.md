@@ -48,7 +48,7 @@ und mit der Installation von Ubuntu begonnen werden.
     und dauert entsprechend sehr lange.
   * Abhängig von der Internetverbindung kann das mehr als 30 Minuten dauern.
   * Falls der Schritt fehlschlägt,
-    zuerst mit `sudo apt udpate && sudo apt upgrade -y` alle existierenden Pakete updaten
+    zuerst mit `sudo apt update && sudo apt upgrade -y` alle existierenden Pakete updaten
     und dann nochmals mit `./provision.sh` versuchen.
   * Wenn alles gut läuft müsste am Schluss eine ähnliche Zeile erscheinen die zwingend `failed=0` anzeigt:
     ~~~~~~
