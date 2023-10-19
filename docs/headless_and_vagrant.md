@@ -233,6 +233,10 @@ Virtualbox
 Wir verwenden Virtualbox as Hypervisor für die VM.
 [VirtualBox Downloads](https://www.virtualbox.org/wiki/Downloads)
 
+Die Installation muss als Admin-User ausgeführt werden,
+Das Erstellen und Starten von VMs soll aber mit dem normalen User gemacht werden.
+Deshalb im folgenden Vagrant-Teil immer mit dem normalen User arbeiten.
+
 
 Vagrant
 -------
