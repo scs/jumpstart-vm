@@ -1,0 +1,15 @@
+name: ansible-run
+
+on: [push, pull_request]
+
+jobs:
+  ansible-run:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Update installed packages
+      run: sudo apt update && sudo apt upgrade -y
+
+    - name: Run ansible playbook
+      run: ./provision.sh
