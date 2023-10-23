@@ -21,7 +21,6 @@
       fallocate -l {{ swapfile_size }} {{ swapfile_file }}
     args:
       creates: "{{ swapfile_file }}"
-      warn: false
     register: _write_swapfile
     tags:
       - swapfile-write-file
@@ -40,8 +39,6 @@
     become: true
     ansible.builtin.command: >
       mkswap {{ swapfile_file }}
-    args:
-      warn: false
     register: _create_swapfile
     when: _write_swapfile.changed
     tags:
@@ -51,8 +48,6 @@
     become: true
     ansible.builtin.command: >
       swapon {{ swapfile_file }}
-    args:
-      warn: false
     when: _create_swapfile is changed
     tags:
       - swapfile-enable-swapfile

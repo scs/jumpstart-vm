@@ -11,8 +11,8 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install \
-  ansible==8.2.0 \
-  ansible-lint==6.17.2 \
+  ansible==8.5.0 \
+  ansible-lint==6.21.1 \
   yamllint==1.32.0
 
 WORKDIR /ansible
