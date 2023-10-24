@@ -1,9 +1,12 @@
 - hosts: all
 
   pre_tasks:
+    - ansible.builtin.include_tasks: tasks/wsl-check-if-wsl.yml
     - ansible.builtin.include_tasks: tasks/ubuntu_apt.yml
     - ansible.builtin.include_tasks: tasks/ubuntu_desktop.yml
+      when: not wsl_is_wsl
     - ansible.builtin.include_tasks: tasks/virtualbox_additions.yml
+      when: not wsl_is_wsl
     - ansible.builtin.include_tasks: tasks/basicsetup.yml
     - ansible.builtin.include_tasks: tasks/buildtools.yml
     - ansible.builtin.include_tasks: tasks/java.yml
