@@ -247,12 +247,6 @@ einer solchen VM. Wir verwenden dazu das integrierte `ansible`.
 
 * Laden Sie Vagrant herunter: [vagrantup.com](https://www.vagrantup.com/)
 * Installieren Sie es mit Default Einstellungen.
-* Starten Sie Git Bash und installieren Sie das benötigte Vagrant Plugin
-  mittels:
-  
-~~~
-vagrant plugin install vagrant-disksize
-~~~
 
 
 ### Powershell 3.0 (nur Windows 7)
