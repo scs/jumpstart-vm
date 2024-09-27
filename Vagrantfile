@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/jammy64"
   config.vm.box_version = "20231018.0.0"
 
-  config.vm.disk :disk, size: "64", primary: true
+  config.vm.disk :disk, size: "64GB", primary: true
 
   config.vm.network "private_network", type: "dhcp"
 
