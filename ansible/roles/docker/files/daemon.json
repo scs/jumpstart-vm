@@ -1,4 +1,7 @@
 {
+  "features": {
+    "buildkit": true
+  },
   "bip": "172.28.0.1/24",
   "default-address-pools": [
     {"base":"172.28.64.0/18", "size":24}
