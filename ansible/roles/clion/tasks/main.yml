@@ -1,31 +1,24 @@
+---
+
 - name: Install dependency for CLion markdown plugin
   become: true
   ansible.builtin.package:
     name:
       - openjfx
 
-- name: Create directories for CLion
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-    mode: "u+rw"
-  with_items:
-    - "{{ clion_download_directory }}"
-    - "{{ clion_install_directory }}"
-
 - name: Install CLion
-  ansible.builtin.unarchive:
-    copy: false
-    src: "{{ clion_download_url }}"
-    dest: "{{ clion_install_directory }}"
-    creates: "{{ clion_location }}/bin/clion.sh"
+  become: true
+  community.general.snap:
+    classic: true
+    name: clion
 
 - name: Add clion alias for all user profiles
   become: true
   ansible.builtin.lineinfile:
     path: "/etc/profile.d/clion.sh"
-    line: "alias clion='{{ clion_location }}/bin/clion.sh &>/dev/null'"
+    line: "alias clion='/snap/bin/clion &>/dev/null'"
     regexp: '^alias clion='
+    state: present
     insertafter: EOF
     create: true
     mode: "ugo+rw"
