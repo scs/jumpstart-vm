@@ -14,6 +14,9 @@ Vagrant.configure("2") do |config|
   config.ssh.forward_agent = true
   config.ssh.forward_x11 = true
 
+  config.vagrant.plugins = ["vagrant-vbguest"]
+  config.vbguest.auto_update = true
+
   config.vm.provider "virtualbox" do |vb|
     vb.name = vm_name
     vb.memory = "4096"

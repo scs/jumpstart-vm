@@ -3,7 +3,6 @@
   pre_tasks:
     - ansible.builtin.include_tasks: tasks/ubuntu_apt.yml
     - ansible.builtin.include_tasks: tasks/ubuntu_desktop.yml
-    - ansible.builtin.include_tasks: tasks/virtualbox_additions.yml
     - ansible.builtin.include_tasks: tasks/basicsetup.yml
     - ansible.builtin.include_tasks: tasks/buildtools.yml
     - ansible.builtin.include_tasks: tasks/java.yml
