@@ -18,6 +18,7 @@
     - role: bash
     - role: tmux
     - role: clion
+    - role: vscode
 
     - role: git-tools
       vars:
@@ -67,8 +68,6 @@
               - AntSupport
               - DevKit
               - Kotlin
-
-    - role: ansible-role-visual-studio-code
 
   post_tasks:
     - ansible.builtin.include_tasks: tasks/intellij.yml
