@@ -4,7 +4,5 @@
   version: '78c6dc8'
 - src: 'https://github.com/gantsign/ansible-role-intellij.git'
   version: '6.12.4'
-- src: 'https://github.com/gantsign/ansible-role-visual-studio-code.git'
-  version: '7.0.0'
 - src: 'https://github.com/bertvv/ansible-role-samba.git'
   version: 'v2.7.1'
