@@ -2,7 +2,6 @@
 
   pre_tasks:
     - ansible.builtin.include_tasks: tasks/ubuntu_apt.yml
-    - ansible.builtin.include_tasks: tasks/ubuntu_desktop.yml
     - ansible.builtin.include_tasks: tasks/basicsetup.yml
     - ansible.builtin.include_tasks: tasks/buildtools.yml
     - ansible.builtin.include_tasks: tasks/java.yml
@@ -15,22 +14,6 @@
     - role: swapfile
       vars:
         swapfile_size: 4G
-
-    - role: ansible-role-samba
-      become: true
-      vars:
-        samba_mitigate_cve_2017_7494: false
-        samba_users:
-          - name: '{{ ansible_env.USER }}'
-            password: '{{ ansible_env.USER }}'
-        samba_shares:
-          - name: vagrant-home
-            path: '{{ ansible_env.HOME }}'
-            browseable: true
-            owner: '{{ ansible_env.USER }}'
-            group: '{{ ansible_env.USER }}'
-            valid_users: '{{ ansible_env.USER }}'
-            write_list: '{{ ansible_env.USER }}'
 
     - role: bash
     - role: tmux
