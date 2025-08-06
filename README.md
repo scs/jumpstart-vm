@@ -114,7 +114,7 @@ Danach muss die WSL Instanz neu gestartet werden.
 Z.B: über das Windows-Terminal:
 
 ~~~~~~
-wsl --terminate wingd-sw-dev-wsl
+wsl --terminate jumpstart-wsl
 ~~~~~~
 
 
